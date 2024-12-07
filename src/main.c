@@ -12,18 +12,20 @@
 //-------------------------------------------------------------------------
 
 typedef struct Dot {
-    Vector2 pos;
-    Vector2 vel;
+    int x;
+    int y;
+    int vx;
+    int vy;
     int radius;
     Color color;
 } Dot;
 
 void DrawDot(Dot *dot) {
-    DrawCircle((int)dot->pos.x,(int) dot->pos.y,(int) dot->radius, dot->color);
+    DrawCircle(dot->x, dot->y, dot->radius, dot->color);
 }
 
 int calculateDistance(Dot* dot1, Dot* dot2) {
-    return sqrt(pow(abs((int)(dot1->pos.x - dot2->pos.x)), 2) + pow(abs((int)(dot1->pos.y - dot2->pos.y)), 2));
+    return sqrt(pow(abs((dot1->x - dot2->x)), 2) + pow(abs((dot1->y - dot2->y)), 2));
 }
 
 void ConnectDots(Dot* dot) {
@@ -34,28 +36,28 @@ void ConnectDots(Dot* dot) {
 
         if (calculateDistance(dot1, dot2) <= (lineThreshold * SCREEN_WIDTH)) {
             // DrawLineEx((Vector2)(10,10), (Vector2)(10,10), 1.0f, WHITE);
-           DrawLine((int) dot1->pos.x,(int) dot1->pos.y,(int) dot2->pos.x,(int) dot2->pos.y, (Color) {17, 63, 86, 120});
+           DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, (Color) {17, 63, 86, 120});
         }
     }
 }
 
 void MoveDot(Dot *dot) {
-    dot->pos.x += dot->vel.x;
-    dot->pos.y += dot->vel.y;
+    dot->x += dot->vx;
+    dot->y += dot->vy;
 }
 
 void SnapDot(Dot* dot) {
-    if ((int)(dot->pos.x >= SCREEN_WIDTH) || (int) (dot->pos.x <= 0)) {
-        dot->vel.x = dot->vel.x * (-1);
+    if ((dot->x >= SCREEN_WIDTH) || (dot->x <= 0)) {
+        dot->vx = dot->vx * (-1);
     }
-    if ((int)(dot->pos.y >= SCREEN_HEIGHT) || (int)(dot->pos.y <= 0)) {
-        dot->vel.y = dot->vel.y * (-1);
+    if ((dot->y >= SCREEN_HEIGHT) || (dot->y <= 0)) {
+        dot->vy = dot->vy * (-1);
     }
 }
 
 // void connectDots(Dot* dot1, Dot* dot2) {
 //     if (calculateDistance(dot1, dot2) <= 300) {
-//         DrawLine(dot1->pos.x, dot1->pos.y, dot2->pos.x, dot2->pos.y, WHITE);
+//         DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, WHITE);
 //     }
 // }
 
@@ -72,10 +74,10 @@ int main(int argc, char const *argv[])
     Dot d[numDots] = {};
 
     for (int i = 0; i < numDots; i++) {
-        d[i].pos.x = rand() % SCREEN_WIDTH + 1;
-        d[i].pos.y = rand() % SCREEN_HEIGHT + 1;
-        d[i].vel.x = (rand() % 5) - 2;
-        d[i].vel.y = (rand() % 5) - 2;
+        d[i].x = rand() % SCREEN_WIDTH + 1;
+        d[i].y = rand() % SCREEN_HEIGHT + 1;
+        d[i].vx = (rand() % 5) - 2;
+        d[i].vy = (rand() % 5) - 2;
         d[i].radius = 3;
         d[i].color = (Color) {17, 80, 90, 230} ;
     }
