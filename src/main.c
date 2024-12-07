@@ -4,14 +4,17 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SCREEN_HEIGHT 400
-#define SCREEN_WIDTH 400
+#define SCREEN_HEIGHT 800
+#define SCREEN_WIDTH 800
+#define numDots 30
 
 //-------------------------------------------------------------------------
 
 typedef struct Dot {
     int x;
     int y;
+    int vx;
+    int vy;
     int radius;
     Color color;
 } Dot;
@@ -24,17 +27,31 @@ int calculateDistance(Dot* dot1, Dot* dot2) {
     return sqrt(pow(abs((dot1->x - dot2->x)), 2) + pow(abs((dot1->y - dot2->y)), 2));
 }
 
-void connectDots(Dot *dot) {
-    Dot *dot1 = dot;
-    Dot *dot2 = dot + 1;
-    if (calculateDistance(dot1, dot2) <= 250) {
-       DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, WHITE);
-     }
+void ConnectDots(Dot* dot) {
+    for (int i = 0; i < numDots; i++)
+    {
+        Dot *dot1 = dot;
+        Dot *dot2 = dot + i;
+
+        if (calculateDistance(dot1, dot2) <= (0.2 * SCREEN_WIDTH)) {
+            // DrawLineEx((Vector2)(10,10), (Vector2)(10,10), 1.0f, WHITE);
+           DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, WHITE);
+        }
+    }
 }
 
 void MoveDot(Dot *dot) {
-    dot->x += (rand() % 11) - 5;
-    dot->y += (rand() % 11) - 5;
+    dot->x += dot->vx;
+    dot->y += dot->vy;
+}
+
+void SnapDot(Dot* dot) {
+    if ((dot->x >= SCREEN_WIDTH) || (dot->x <= 0)) {
+        dot->vx = dot->vx * (-1);
+    }
+    if ((dot->y >= SCREEN_HEIGHT) || (dot->y <= 0)) {
+        dot->vy = dot->vy * (-1);
+    }
 }
 
 // void connectDots(Dot* dot1, Dot* dot2) {
@@ -53,11 +70,13 @@ int main(int argc, char const *argv[])
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Dots");
     SetTargetFPS(60);
 
-    Dot d[20] = {};
+    Dot d[numDots] = {};
 
-    for (int i = 0; i < 20; i++) {
-        d[i].x = rand() % 400 + 1;
-        d[i].y = rand() % 400 + 1;
+    for (int i = 0; i < numDots; i++) {
+        d[i].x = rand() % SCREEN_WIDTH + 1;
+        d[i].y = rand() % SCREEN_HEIGHT + 1;
+        d[i].vx = (rand() % 3) - 1;
+        d[i].vy = (rand() % 3) - 1;
         d[i].radius = 3;
         d[i].color = WHITE;
     }
@@ -66,11 +85,12 @@ int main(int argc, char const *argv[])
     while(!WindowShouldClose()) {
         BeginDrawing();
         ClearBackground(BLACK);
-            for (int i = 0; i < 20; ++i)
+            for (int i = 0; i < numDots; ++i)
             {
                 DrawDot(&d[i]);
                 MoveDot(&d[i-1]);
-                connectDots(&d[i]);
+                ConnectDots(&d[i]);
+                SnapDot(&d[i]);
             }
         EndDrawing();
     }
