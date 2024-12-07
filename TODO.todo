@@ -1,11 +1,14 @@
- ✔ Animate Movement: Randomly move points slightly each frame. @done (24-12-08 02:40)
-   ✔ Simpple random movements @done (24-12-08 02:40)
-   ✔ Smoother movements @done (24-12-08 03:24)
- ✔ Connect to make triangles @done (24-12-08 03:24)
  ☐ Refactor to use Vec2 for position and velocity.
- ✔ Check how to make the first and last element also get compared @done (24-12-08 03:24)
+ ☐ Dont draw not linked dots
+ ☐ Attract if connected
+ ☐ Web build for the website
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
+ ✔ Smoother movements @done (24-12-08 03:24)
+ ✔ Connect to make triangles @done (24-12-08 03:24)
+ ✔ Check how to make the first and last element also get compared @done (24-12-08 03:24)
+ ✔ Simpple random movements @done (24-12-08 02:40)
+ ✔ Animate Movement: Randomly move points slightly each frame. @done (24-12-08 02:40)
  ✔ Render Lines: Draw lines between connected points and circles at the vertices. @done (24-12-07 22:36)
  ✔ Generate points such that they are always in a certain distance. @done (24-12-07 22:32)
  ✔ Setup Points: Initialize random points within the screen bounds. @done (24-12-07 22:27)
