@@ -1,1 +1,5 @@
 .cache
+include
+build
+lib
+include
