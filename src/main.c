@@ -27,13 +27,13 @@ void DrawDot(Dot *dot) {
 //     DrawLine(a->x, a->y, b->x, b->y, WHITE);
 // }
 
-int calculateDistance(Dot dot1, Dot dot2) {
-    return sqrt(pow(abs((dot1.x - dot2.x)), 2) + pow(abs((dot1.y - dot2.y)), 2));
+int calculateDistance(Dot* dot1, Dot* dot2) {
+    return sqrt(pow(abs((dot1->x - dot2->x)), 2) + pow(abs((dot1->y - dot2->y)), 2));
 }
 
-void connectDots(Dot dot1, Dot dot2) {
+void connectDots(Dot* dot1, Dot* dot2) {
     if (calculateDistance(dot1, dot2) <= 300) {
-        DrawLine(dot1.x, dot1.y, dot2.x, dot2.y, WHITE);
+        DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, WHITE);
     }
 }
 
@@ -57,7 +57,7 @@ int main(int argc, char const *argv[])
 
     while(!WindowShouldClose()) {
         BeginDrawing();
-        // ClearBackground(BLACK);
+        ClearBackground(BLACK);
             // for (int i = 0; i < 20; ++i)
             // {   
             //     DrawDot(&d[i]);
@@ -67,8 +67,7 @@ int main(int argc, char const *argv[])
             Dot a = {0, 0, 3, WHITE};
             Dot b = {GetMouseX(), GetMouseY(), 3, WHITE};
             // Dot b = {GetMouseX(), GetMouseY(), 3, WHITE};
-            connectDots(a, b);
-
+            connectDots(&a, &b);
 
         EndDrawing();
     }
