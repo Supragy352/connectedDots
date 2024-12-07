@@ -1,0 +1,8 @@
+[
+{
+  "directory": "E:/Dev/C/dotsConnect/build",
+  "command": "E:/raylib/w64devkit/bin/cc.exe  @CMakeFiles/dots.dir/includes_C.rsp  -o CMakeFiles/dots.dir/src/main.c.obj -c E:/Dev/C/dotsConnect/src/main.c",
+  "file": "E:/Dev/C/dotsConnect/src/main.c",
+  "output": "CMakeFiles/dots.dir/src/main.c.obj"
+}
+]

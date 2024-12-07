@@ -1,0 +1,59 @@
+{
+	"folders":
+	[
+		{
+			"path": "../"
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "dots - all",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "all"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - clean",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "clean"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - dots",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "dots"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - dots/fast",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "dots/fast"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - build_and_run",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "build_and_run"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - run",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "run"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - edit_cache",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "edit_cache"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		},
+		{
+			"name": "dots - rebuild_cache",
+			"cmd": ["E:/raylib/w64devkit/bin/make.exe", "-f", "Makefile", "rebuild_cache"],
+			"working_dir": "${project_path}",
+			"file_regex": "^(..[^:]*)(?::|\\()([0-9]+)(?::|\\))(?:([0-9]+):)?\\s*(.*)"
+		}
+	]
+}
