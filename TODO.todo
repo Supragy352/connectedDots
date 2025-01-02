@@ -1,7 +1,7 @@
- ☐ Refactor to use Vec2 for position and velocity.
+ ✘ Refactor to use Vec2 for position and velocity. @cancelled (24-12-08 05:18)
+ ☐ Web build for the website
  ☐ Dont draw not linked dots
  ☐ Attract if connected
- ☐ Web build for the website
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Archive:
  ✔ Smoother movements @done (24-12-08 03:24)

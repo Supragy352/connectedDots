@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.2)
 project(dots)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+list(APPEND CMAKE_PREFIX_PATH "E:/raylib/w64devkit/external")
 
 find_package(raylib REQUIRED)
 

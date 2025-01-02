@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define SCREEN_HEIGHT 800
+#define SCREEN_HEIGHT 1000
 #define SCREEN_WIDTH 800
-#define numDots 30
+#define numDots 50
 #define lineThreshold 0.2
 
 //-------------------------------------------------------------------------
@@ -36,6 +36,7 @@ void ConnectDots(Dot* dot) {
 
         if (calculateDistance(dot1, dot2) <= (lineThreshold * SCREEN_WIDTH)) {
             // DrawLineEx((Vector2)(10,10), (Vector2)(10,10), 1.0f, WHITE);
+           // DrawLine(dot1->x, dot1->y, dot2->x, dot2->y,WHITE);
            DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, (Color) {17, 63, 86, 120});
         }
     }
@@ -54,7 +55,6 @@ void SnapDot(Dot* dot) {
         dot->vy = dot->vy * (-1);
     }
 }
-
 // void connectDots(Dot* dot1, Dot* dot2) {
 //     if (calculateDistance(dot1, dot2) <= 300) {
 //         DrawLine(dot1->x, dot1->y, dot2->x, dot2->y, WHITE);
@@ -76,10 +76,11 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < numDots; i++) {
         d[i].x = rand() % SCREEN_WIDTH + 1;
         d[i].y = rand() % SCREEN_HEIGHT + 1;
-        d[i].vx = (rand() % 5) - 2;
-        d[i].vy = (rand() % 5) - 2;
+        d[i].vx = (rand() % 3) - 1;
+        d[i].vy = (rand() % 3) - 1;
         d[i].radius = 3;
         d[i].color = (Color) {17, 80, 90, 230} ;
+        // d[i].color = WHITE ;
     }
 
 
